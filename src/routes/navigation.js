@@ -41,8 +41,8 @@ const TabRoutes = ()=> {
         <Image source={require('../assets/icons/coffee.png')} style={styles.icon}/>
       )}}/>
       <Tab.Screen name="Grain" component={Grain} options={{tabBarIcon: () => (
-        <Image source={require('../assets/icons/sack.png')} style={styles.icon}/>
-      )}}/>
+        <Image source={require('../assets/icons/sack.png')} style={styles.icon} />
+      ), unmountOnBlur: true}}/>
       <Tab.Screen name="Cart" component={Cart} options={{tabBarIcon: () => (
         <Image source={require('../assets/icons/trolley.png')} style={styles.icon}/>
       ), tabBarBadge:(qnt>0?qnt:null), unmountOnBlur: true }} />

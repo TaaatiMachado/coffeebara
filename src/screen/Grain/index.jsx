@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { ProdContext } from "../../context/Products";
+import GrainDetailsShimmer from "../GrainDetailsShimmer";
 
 const Grain = ({ navigation }) => {
 
@@ -18,7 +19,16 @@ const Grain = ({ navigation }) => {
     }, []);
 
     if (isLoading) {
-        return <Text>Loading...</Text>;
+        return <>
+            <View style={style.list}>
+                <GrainDetailsShimmer/>
+                <GrainDetailsShimmer/>
+                <GrainDetailsShimmer/>
+                <GrainDetailsShimmer/>
+                <GrainDetailsShimmer/>
+                <GrainDetailsShimmer/>
+            </View>
+        </>;
     }
 
 
@@ -26,6 +36,7 @@ const Grain = ({ navigation }) => {
     return (
         <>
             <Text style={style.header}>Coffeebara Grains</Text>
+
             <FlatList data={grain}
                 keyExtractor={({ id }) => id}
                 renderItem={({ item }) => (
@@ -49,7 +60,10 @@ const Grain = ({ navigation }) => {
                 )}
                 style={style.list}
                 contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-around', gap: 15 }} />
+
         </>
+
+        
 
     )
 }
@@ -67,7 +81,8 @@ const style = StyleSheet.create({
     },
     list: {
         padding: 15,
-        backgroundColor: '#fff',      
+        backgroundColor: '#fff',    
+        gap: 10  
     },
     wrapper: {
         flexDirection: 'row',
